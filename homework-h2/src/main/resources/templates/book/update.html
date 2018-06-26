@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body style="background: rgb(19, 203, 153)">
+    <div class="container-fluid">
+        <div class="container w-50 pt-2 pb-3" style="background: rgb(67, 159, 118);color:white;">
+            <h1 class="text-center text-white">Update Book</h1>
+        </div>
+        <div class="container w-50 p-5" style="background: rgb(22, 255, 189)">
+            <form action="/update/submit" method="post" th:object="${book}" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}"><br>
+                <label th:text="#{table.title}">Title:</label> <input class="form-control" type="text" th:field="*{title}"><br>
+                <label th:text="#{table.author}">Author:</label> <input class="form-control" type="text" th:field="*{author}"><br>
+                <label th:text="#{table.publisher}">Publisher:</label> <input class="form-control" type="text" th:field="*{publisher}"><br>
+                <div style="width: 75px;height: 75px;border-radius: 50%;border:1px solid #eee;" id="img-box">
+                    <img style="width:100%;height: 100%;border-radius: 50%" th:src="${book.getThumbnail()}">
+                </div>
+                <input type="file" name="file"><br>
+                <input type="hidden" th:field="*{thumbnail}"><br>
+                <input type="submit" value="Submit" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

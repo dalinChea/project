@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateBook</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body style="background: rgb(19, 203, 153)">
+
+    <div class="container-fluid">
+        <div class="container w-50 pt-2 pb-3" style="background: rgb(67, 159, 118);color:white;">
+            <h1 class="text-center text-white">Create Book</h1>
+        </div>
+        <div class="container w-50 p-5" style="background: rgb(22, 255, 189)">
+            <form action="/create/submit" method="post" th:object="${book}" enctype="multipart/form-data">
+                <!--<label th:text="#{table.id}">ID:</label> <input type="text"  th:field="*{id}">-->
+                <!--<span style="color:red" th:if="${#fields.hasErrors()}" th:errors="*{id}">Error</span><br>-->
+                <label th:text="#{table.title}">Title:</label> <input class="form-control" type="text" th:field="*{title}">
+                <span style="color:red" th:if="${#fields.hasErrors()}" th:errors="*{title}"></span><br>
+                <label th:text="#{table.author}">Author:</label> <input class="form-control" type="text" th:field="*{author}"><br>
+                <label th:text="#{table.publisher}">Publisher:</label> <input class="form-control" type="text" th:field="*{publisher}"><br>
+
+                <input type="file" name="file"><br><br>
+                <input type="submit" value="Submit" class="btn btn-success m-auto">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+
+
+</body>
+</html>

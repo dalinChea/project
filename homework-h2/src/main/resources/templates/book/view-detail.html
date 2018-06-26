@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body style="background: rgb(19, 203, 153)">
+<div class="container-fluid">
+    <div class="container w-50 pt-2 pb-3" style="background: rgb(67, 159, 118);color:white;">
+        <h1 class="text-center text-white">View Book</h1>
+    </div>
+    <div class="container w-50 p-5" style="background: rgb(22, 255, 189)">
+        <form action="/update/submit" method="post" th:object="${book}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}"><br>
+            <label th:text="#{table.title}">Title:</label> <input class="form-control" type="text" th:field="*{title}" readonly><br>
+            <label th:text="#{table.author}">Author:</label> <input class="form-control" type="text" th:field="*{author}" readonly><br>
+            <label th:text="#{table.publisher}">Publisher:</label> <input class="form-control" type="text" th:field="*{publisher}" readonly><br>
+            <div style="width: 75px;height: 75px;border-radius: 50%;border:1px solid #eee;" id="img-box">
+                <img style="width:100%;height: 100%;border-radius: 50%" th:src="${book.getThumbnail()}">
+            </div>
+            <input type="hidden" th:field="*{thumbnail}"><br>
+            <input type="button" value="Go Back" class="btn btn-success" id="btn-back">
+        </form>
+    </div>
+</div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn-back').click(function () {
+                window.location = "http://localhost:3322/index";
+            })
+        })
+
+    </script>
+</body>
+</html>
